@@ -2,28 +2,28 @@ import 'package:aula_supase/components/customTextFormField.dart';
 import 'package:aula_supase/database/operationSupabase.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class CadastroPage extends StatefulWidget {
+  const CadastroPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CadastroPage> createState() => _CadastroPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CadastroPageState extends State<CadastroPage> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController controller_nome = TextEditingController();
-    TextEditingController controller_email = TextEditingController();
-    TextEditingController controller_telefone = TextEditingController();
+    TextEditingController controllerNome = TextEditingController();
+    TextEditingController controllerEmail = TextEditingController();
+    TextEditingController controllerTelefone = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        toolbarHeight: 100,
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
         elevation: 15,
         centerTitle: true,
         title: const Text(
-          'Cadastro Pessoa',
+          'Cadastrar Nova Pessoa',
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),
@@ -34,25 +34,25 @@ class _HomePageState extends State<HomePage> {
           children: [
             CustomTextFormField(
               labeltext: 'Nome Completo',
-              controller: controller_nome,
+              controller: controllerNome,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'E-mail',
-              controller: controller_email,
+              controller: controllerEmail,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'Telefone',
-              controller: controller_telefone,
+              controller: controllerTelefone,
             ),
             const SizedBox(height: 12),
             ElevatedButton.icon(
               onPressed: () {
                 OperationSupabaseDB().insertRowSupabase(
-                  controller_nome.text,
-                  controller_email.text,
-                  controller_telefone.text,
+                  controllerNome.text,
+                  controllerEmail.text,
+                  controllerTelefone.text,
                 );
               },
               icon: const Icon(Icons.save),
