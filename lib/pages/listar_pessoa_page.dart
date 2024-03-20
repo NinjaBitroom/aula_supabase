@@ -32,10 +32,47 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
               child: ListTile(
                 leading: IconButton(
                   onPressed: () {
+                    final nomeController =
+                        TextEditingController(text: snap.data![index]['nome']);
                     showDialog(
                       context: context,
-                      builder: (context) => const AlertDialog(
-                        content: Text('text'),
+                      builder: (context) => Dialog(
+                        child: Container(
+                          height: 200,
+                          padding: const EdgeInsets.all(12),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              TextField(
+                                controller: nomeController,
+                                decoration: const InputDecoration(
+                                  labelText: 'Editar Nome',
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  final db = OperationSupabaseDB();
+                                  db.updateNomePessoa(
+                                    snap.data![index]['id'],
+                                    nomeController.text,
+                                  );
+                                  setState(() async {
+                                    (await pessoas)[index]['nome'] =
+                                        nomeController.text;
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                style: const ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStatePropertyAll(Colors.blue),
+                                  foregroundColor:
+                                      MaterialStatePropertyAll(Colors.white),
+                                ),
+                                child: const Text('Salvar'),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                     );
                   },
@@ -66,7 +103,10 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
             itemCount: snap.data!.length,
           );
         } else {
-          body = const CircularProgressIndicator();
+          body = const Center(
+              child: CircularProgressIndicator(
+            color: Colors.blue,
+          ));
         }
         return Scaffold(
           appBar: AppBar(

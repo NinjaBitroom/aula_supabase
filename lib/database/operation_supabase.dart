@@ -19,4 +19,10 @@ class OperationSupabaseDB {
   Future<void> deletePessoa(int id) async {
     await supabase.from('cadastrarPessoas').delete().match({'id': id});
   }
+
+  Future<void> updateNomePessoa(int id, String novoNome) async {
+    await supabase
+        .from('cadastrarPessoas')
+        .update({'nome': novoNome}).match({'id': id});
+  }
 }
