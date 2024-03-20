@@ -1,4 +1,5 @@
 import 'package:aula_supase/appRoutes.dart';
+import 'package:aula_supase/components/customElevatedButton.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,37 +20,43 @@ class _HomePageState extends State<HomePage> {
       ),
       body: GridView.count(
         crossAxisCount: 2,
+        mainAxisSpacing: 12,
+        crossAxisSpacing: 12,
         padding: const EdgeInsets.all(12),
         children: [
-          ElevatedButton(
+          CustomElevatedButton(
             onPressed: () {
               Navigator.pushNamed(context, AppRoutes.cadastroPage);
             },
-            style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.blue),
-              shape: MaterialStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(12),
-                  ),
-                ),
-              ),
-            ),
-            child: const Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.person_add,
-                  color: Colors.white,
-                  size: 82,
-                ),
-                Text(
-                  'Cadastrar Pessoa',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                )
-              ],
-            ),
+            icon: Icons.person_add,
+            text: 'Cadastrar Pessoa',
+          ),
+          CustomElevatedButton(
+            onPressed: () {},
+            icon: Icons.add_shopping_cart,
+            text: 'Cadastrar Produto',
+          ),
+          CustomElevatedButton(
+            onPressed: () {},
+            icon: Icons.account_balance,
+            text: 'Cadastrar Fornecedor',
+          ),
+          CustomElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, AppRoutes.listarPessoaPage);
+            },
+            icon: Icons.list_alt,
+            text: 'Listar Pessoa',
+          ),
+          CustomElevatedButton(
+            onPressed: () {},
+            icon: Icons.line_style,
+            text: 'Listar Produto',
+          ),
+          CustomElevatedButton(
+            onPressed: () {},
+            icon: Icons.featured_play_list_outlined,
+            text: 'Listar Fornecedor',
           ),
         ],
       ),

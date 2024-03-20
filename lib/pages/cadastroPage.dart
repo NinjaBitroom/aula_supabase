@@ -20,12 +20,8 @@ class _CadastroPageState extends State<CadastroPage> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
-        elevation: 15,
-        centerTitle: true,
         title: const Text(
           'Cadastrar Nova Pessoa',
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),
       ),
       body: Padding(

@@ -11,4 +11,12 @@ class OperationSupabaseDB {
       'telefone': telefone,
     });
   }
+
+  Future<List<Map<String, dynamic>>> getPessoas() async {
+    return await supabase.from('cadastrarPessoas').select();
+  }
+
+  Future<void> deletePessoa(int id) async {
+    await supabase.from('cadastrarPessoas').delete().match({'id': id});
+  }
 }
