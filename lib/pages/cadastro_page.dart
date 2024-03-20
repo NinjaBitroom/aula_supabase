@@ -1,5 +1,5 @@
-import 'package:aula_supase/components/customTextFormField.dart';
-import 'package:aula_supase/database/operationSupabase.dart';
+import 'package:aula_supase/components/custom_text_form_field.dart';
+import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
 class CadastroPage extends StatefulWidget {

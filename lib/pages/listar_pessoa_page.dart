@@ -1,4 +1,4 @@
-import 'package:aula_supase/database/operationSupabase.dart';
+import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
 class ListarPessoaPage extends StatefulWidget {

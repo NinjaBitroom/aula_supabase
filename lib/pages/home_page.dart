@@ -1,5 +1,5 @@
-import 'package:aula_supase/appRoutes.dart';
-import 'package:aula_supase/components/customElevatedButton.dart';
+import 'package:aula_supase/app_routes.dart';
+import 'package:aula_supase/components/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {

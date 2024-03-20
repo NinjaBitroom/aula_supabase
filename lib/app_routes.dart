@@ -1,6 +1,6 @@
-import 'package:aula_supase/pages/cadastroPage.dart';
-import 'package:aula_supase/pages/homePage.dart';
-import 'package:aula_supase/pages/listarPessoaPage.dart';
+import 'package:aula_supase/pages/cadastro_page.dart';
+import 'package:aula_supase/pages/home_page.dart';
+import 'package:aula_supase/pages/listar_pessoa_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class AppRoutes {
