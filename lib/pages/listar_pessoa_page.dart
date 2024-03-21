@@ -64,9 +64,18 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
                                 pessoas?[index]['id'],
                                 nomeController.text,
                               );
+                              String nomeAntigo = pessoas?[index]['nome'];
                               await _atualizarPessoas();
                               if (!context.mounted) return;
+                              String nomeNovo = pessoas?[index]['nome'];
+                              String texto =
+                                  'O nome $nomeAntigo foi atualizado para $nomeNovo!';
                               Navigator.pop(context);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(texto),
+                                ),
+                              );
                             },
                             style: const ButtonStyle(
                               backgroundColor:
@@ -89,7 +98,12 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
               onPressed: () async {
                 final db = OperationSupabaseDB();
                 await db.deletePessoa(pessoas?[index]['id']);
+                String nomeDeletado = pessoas?[index]['nome'];
                 await _atualizarPessoas();
+                if (!context.mounted) return;
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text('A pessoa $nomeDeletado foi deletada!'),
+                ));
               },
               icon: const Icon(Icons.delete),
               color: Colors.redAccent,
