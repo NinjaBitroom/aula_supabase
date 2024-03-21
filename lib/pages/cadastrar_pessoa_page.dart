@@ -2,19 +2,21 @@ import 'package:aula_supase/components/custom_text_form_field.dart';
 import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
-class CadastroPage extends StatefulWidget {
-  const CadastroPage({super.key});
+class CadastrarPessoaPage extends StatefulWidget {
+  const CadastrarPessoaPage({super.key});
 
   @override
-  State<CadastroPage> createState() => _CadastroPageState();
+  State<CadastrarPessoaPage> createState() => _CadastrarPessoaPageState();
 }
 
-class _CadastroPageState extends State<CadastroPage> {
+class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController controllerNome = TextEditingController();
-    TextEditingController controllerEmail = TextEditingController();
-    TextEditingController controllerTelefone = TextEditingController();
+    TextEditingController nomeController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController cpfController = TextEditingController();
+    TextEditingController dataNascController = TextEditingController();
+    TextEditingController telController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -30,33 +32,43 @@ class _CadastroPageState extends State<CadastroPage> {
           children: [
             CustomTextFormField(
               labeltext: 'Nome Completo',
-              controller: controllerNome,
+              controller: nomeController,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'E-mail',
-              controller: controllerEmail,
+              controller: emailController,
+            ),
+            const SizedBox(height: 12),
+            CustomTextFormField(
+              labeltext: 'CPF',
+              controller: cpfController,
+            ),
+            const SizedBox(height: 12),
+            CustomTextFormField(
+              labeltext: 'Data de Nascimento',
+              controller: dataNascController,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'Telefone',
-              controller: controllerTelefone,
+              controller: telController,
             ),
             const SizedBox(height: 12),
             ElevatedButton.icon(
               onPressed: () {
                 OperationSupabaseDB().insertRowSupabase(
-                  controllerNome.text,
-                  controllerEmail.text,
-                  controllerTelefone.text,
+                  nomeController.text,
+                  emailController.text,
+                  telController.text,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content:
-                      Text('A pessoa ${controllerNome.text} foi cadastrada!'),
+                      Text('A pessoa ${nomeController.text} foi cadastrada!'),
                 ));
-                controllerNome.clear();
-                controllerEmail.clear();
-                controllerTelefone.clear();
+                nomeController.clear();
+                emailController.clear();
+                telController.clear();
               },
               icon: const Icon(Icons.save),
               label: const Text('Salvar'),
