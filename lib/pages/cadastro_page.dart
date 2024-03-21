@@ -50,6 +50,13 @@ class _CadastroPageState extends State<CadastroPage> {
                   controllerEmail.text,
                   controllerTelefone.text,
                 );
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content:
+                      Text('A pessoa ${controllerNome.text} foi cadastrada!'),
+                ));
+                controllerNome.clear();
+                controllerEmail.clear();
+                controllerTelefone.clear();
               },
               icon: const Icon(Icons.save),
               label: const Text('Salvar'),
