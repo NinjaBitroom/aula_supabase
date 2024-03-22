@@ -53,6 +53,8 @@ class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
               controller: dataNascController,
               keyboardType: TextInputType.datetime,
             ),
+            // InputDatePickerFormField(
+            //     firstDate: DateTime(1900), lastDate: DateTime.now()),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'Telefone',
