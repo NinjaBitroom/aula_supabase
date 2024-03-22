@@ -33,33 +33,40 @@ class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
             CustomTextFormField(
               labeltext: 'Nome Completo',
               controller: nomeController,
+              keyboardType: TextInputType.name,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'E-mail',
               controller: emailController,
+              keyboardType: TextInputType.emailAddress,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'CPF',
               controller: cpfController,
+              keyboardType: TextInputType.number,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'Data de Nascimento',
               controller: dataNascController,
+              keyboardType: TextInputType.datetime,
             ),
             const SizedBox(height: 12),
             CustomTextFormField(
               labeltext: 'Telefone',
               controller: telController,
+              keyboardType: TextInputType.phone,
             ),
             const SizedBox(height: 12),
             ElevatedButton.icon(
               onPressed: () {
-                OperationSupabaseDB().insertRowSupabase(
+                OperationSupabaseDB().setPessoa(
                   nomeController.text,
                   emailController.text,
+                  cpfController.text,
+                  dataNascController.text,
                   telController.text,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -68,6 +75,8 @@ class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
                 ));
                 nomeController.clear();
                 emailController.clear();
+                cpfController.clear();
+                dataNascController.clear();
                 telController.clear();
               },
               icon: const Icon(Icons.save),
