@@ -1,3 +1,4 @@
+import 'package:aula_supase/models/cadastro_pessoas_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 final class OperationSupabaseDB {
@@ -14,8 +15,13 @@ final class OperationSupabaseDB {
     });
   }
 
-  Future<List<Map<String, dynamic>>> getPessoas() async {
-    return await supabase.from('cadastroPessoas').select();
+  Future<List<PessoaModel>> getPessoas() async {
+    final json = await supabase.from('cadastroPessoas').select();
+    final listaPessoas = <PessoaModel>[];
+    for (final pessoa in json) {
+      listaPessoas.add(PessoaModel.fromJson(pessoa));
+    }
+    return listaPessoas;
   }
 
   Future<void> deletePessoa(int id) async {
