@@ -9,13 +9,13 @@ class ListarPessoaPage extends StatefulWidget {
 }
 
 class _ListarPessoaPageState extends State<ListarPessoaPage> {
-  List<Map<String, dynamic>>? pessoas;
+  List<Map<String, dynamic>>? _pessoas;
 
   Future<void> _atualizarPessoas() async {
     final db = OperationSupabaseDB();
     final listaPessoas = await db.getPessoas();
     setState(() {
-      pessoas = listaPessoas;
+      _pessoas = listaPessoas;
     });
   }
 
@@ -28,7 +28,7 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
   @override
   Widget build(BuildContext context) {
     Widget body;
-    if (pessoas != null) {
+    if (_pessoas != null) {
       body = ListView.builder(
         padding: const EdgeInsets.all(12),
         itemBuilder: (context, index) => Padding(
@@ -37,7 +37,7 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
             leading: IconButton(
               onPressed: () {
                 final nomeController =
-                    TextEditingController(text: pessoas?[index]['nome']);
+                    TextEditingController(text: _pessoas?[index]['nome']);
                 showDialog(
                   context: context,
                   builder: (context) => Dialog(
@@ -57,10 +57,10 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
                             onPressed: () async {
                               final db = OperationSupabaseDB();
                               await db.updateNomePessoa(
-                                pessoas?[index]['id'],
+                                _pessoas?[index]['id'],
                                 nomeController.text,
                               );
-                              String nomeAntigo = pessoas?[index]['nome'];
+                              String nomeAntigo = _pessoas?[index]['nome'];
                               String nomeNovo = nomeController.text;
                               await _atualizarPessoas();
                               if (!context.mounted) return;
@@ -93,8 +93,8 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
             trailing: IconButton(
               onPressed: () async {
                 final db = OperationSupabaseDB();
-                await db.deletePessoa(pessoas?[index]['id']);
-                String nomeDeletado = pessoas?[index]['nome'];
+                await db.deletePessoa(_pessoas?[index]['id']);
+                String nomeDeletado = _pessoas?[index]['nome'];
                 await _atualizarPessoas();
                 if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -111,10 +111,10 @@ class _ListarPessoaPageState extends State<ListarPessoaPage> {
                 Radius.circular(12),
               ),
             ),
-            title: Text(pessoas?[index]['nome']),
+            title: Text(_pessoas?[index]['nome']),
           ),
         ),
-        itemCount: pessoas?.length,
+        itemCount: _pessoas?.length,
       );
     } else {
       body = const Center(
