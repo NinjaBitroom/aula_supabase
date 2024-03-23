@@ -1,13 +1,13 @@
-class PessoaModel {
-  int id;
-  DateTime createdAt;
-  String nome;
-  String email;
-  String cpf;
-  DateTime dataNascimento;
-  String telefone;
+final class PessoaModel {
+  final int id;
+  final DateTime createdAt;
+  final String nome;
+  final String email;
+  final String cpf;
+  final DateTime dataNascimento;
+  final String telefone;
 
-  PessoaModel(
+  const PessoaModel(
       {required this.id,
       required this.createdAt,
       required this.nome,

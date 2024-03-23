@@ -1,6 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-class OperationSupabaseDB {
+final class OperationSupabaseDB {
   final supabase = Supabase.instance.client;
 
   Future<void> setPessoa(String nome, String email, String cpf, String dataNasc,

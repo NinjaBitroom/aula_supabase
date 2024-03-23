@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatelessWidget {
+final class CustomTextFormField extends StatelessWidget {
   final String labeltext;
   final TextEditingController controller;
   final TextInputType keyboardType;

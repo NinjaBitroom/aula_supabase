@@ -1,14 +1,14 @@
 import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
-class ListarPessoaPage extends StatefulWidget {
+final class ListarPessoaPage extends StatefulWidget {
   const ListarPessoaPage({super.key});
 
   @override
   State<ListarPessoaPage> createState() => _ListarPessoaPageState();
 }
 
-class _ListarPessoaPageState extends State<ListarPessoaPage> {
+final class _ListarPessoaPageState extends State<ListarPessoaPage> {
   List<Map<String, dynamic>>? _pessoas;
 
   Future<void> _atualizarPessoas() async {

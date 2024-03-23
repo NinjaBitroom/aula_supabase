@@ -2,14 +2,14 @@ import 'package:aula_supase/components/custom_text_form_field.dart';
 import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
-class CadastrarPessoaPage extends StatefulWidget {
+final class CadastrarPessoaPage extends StatefulWidget {
   const CadastrarPessoaPage({super.key});
 
   @override
   State<CadastrarPessoaPage> createState() => _CadastrarPessoaPageState();
 }
 
-class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
+final class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
   final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
   final _cpfController = TextEditingController();
