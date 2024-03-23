@@ -10,7 +10,7 @@ Future<void> main() async {
   );
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    routes: AppRoutes.routes(),
+    routes: AppRoutes.routesMap(),
     initialRoute: AppRoutes.homePage,
   ));
 }
