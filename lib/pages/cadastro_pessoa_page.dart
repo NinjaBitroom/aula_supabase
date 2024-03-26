@@ -3,14 +3,14 @@ import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-final class CadastrarPessoaPage extends StatefulWidget {
-  const CadastrarPessoaPage({super.key});
+final class CadastroPessoaPage extends StatefulWidget {
+  const CadastroPessoaPage({super.key});
 
   @override
-  State<CadastrarPessoaPage> createState() => _CadastrarPessoaPageState();
+  State<CadastroPessoaPage> createState() => _CadastroPessoaPageState();
 }
 
-final class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
+final class _CadastroPessoaPageState extends State<CadastroPessoaPage> {
   final _nomeController = TextEditingController();
   final _emailController = TextEditingController();
   final _cpfController = TextEditingController();

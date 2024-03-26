@@ -18,7 +18,6 @@ final class PessoaModel {
   });
 
   factory PessoaModel.fromJson(Map<String, dynamic> json) {
-    print(json);
     final int id = json['id'];
     final DateTime createdAt = DateTime.parse(json['created_at']);
     final String nome = json['nome'];

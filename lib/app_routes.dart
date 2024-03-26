@@ -1,6 +1,6 @@
-import 'package:aula_supase/pages/cadastrar_pessoa_page.dart';
+import 'package:aula_supase/pages/cadastro_pessoa_page.dart';
 import 'package:aula_supase/pages/home_page.dart';
-import 'package:aula_supase/pages/listar_pessoa_page.dart';
+import 'package:aula_supase/pages/lista_pessoa_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -11,8 +11,8 @@ class AppRoutes {
   static Map<String, WidgetBuilder> routesMap() {
     return {
       homePage: (BuildContext context) => const HomePage(),
-      cadastroPage: (BuildContext context) => const CadastrarPessoaPage(),
-      listarPessoaPage: (BuildContext context) => const ListarPessoaPage(),
+      cadastroPage: (BuildContext context) => const CadastroPessoaPage(),
+      listarPessoaPage: (BuildContext context) => const ListaPessoaPage(),
     };
   }
 }
