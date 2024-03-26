@@ -4,13 +4,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 final class OperationSupabaseDB {
   final supabase = Supabase.instance.client;
 
-  Future<void> setPessoa(String nome, String email, String cpf, String dataNasc,
-      String telefone) async {
+  Future<void> setPessoa(String nome, String email, String cpf,
+      DateTime dataNasc, String telefone) async {
     await supabase.from('cadastroPessoas').insert({
       'nome': nome,
       'email': email,
       'cpf': cpf,
-      'data_nascimento': dataNasc,
+      'data_nascimento': dataNasc.toString(),
       'telefone': telefone,
     });
   }

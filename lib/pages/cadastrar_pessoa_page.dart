@@ -1,6 +1,7 @@
 import 'package:aula_supase/components/custom_text_form_field.dart';
 import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 final class CadastrarPessoaPage extends StatefulWidget {
   const CadastrarPessoaPage({super.key});
@@ -67,11 +68,12 @@ final class _CadastrarPessoaPageState extends State<CadastrarPessoaPage> {
             const SizedBox(height: 12),
             ElevatedButton.icon(
               onPressed: () {
+                final f = DateFormat('dd/MM/yyyy');
                 OperationSupabaseDB().setPessoa(
                   _nomeController.text,
                   _emailController.text,
                   _cpfController.text,
-                  _dataNascController.text,
+                  f.parse(_dataNascController.text),
                   _telController.text,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
