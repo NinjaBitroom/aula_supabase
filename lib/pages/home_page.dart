@@ -26,7 +26,7 @@ final class _HomePageState extends State<HomePage> {
         children: [
           CustomElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, AppRoutes.cadastroPage);
+              Navigator.pushNamed(context, AppRoutes.cadastroPessoaPage);
             },
             icon: Icons.person_add,
             text: 'Cadastrar Pessoa',

@@ -13,6 +13,6 @@ Future<void> main() async {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     routes: AppRoutes.routesMap(),
-    initialRoute: AppRoutes.homePage,
+    initialRoute: AppRoutes.loginPage,
   ));
 }
