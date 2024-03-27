@@ -24,6 +24,9 @@ class _PessoaListViewState extends State<PessoaListView> {
   @override
   void initState() {
     super.initState();
+    setState(() {
+      _pessoas = widget.pessoas;
+    });
     _atualizarPessoas();
   }
 
