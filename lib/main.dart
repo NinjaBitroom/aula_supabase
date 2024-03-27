@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   Intl.defaultLocale = 'pt_BR';
   await Supabase.initialize(
     url: KeySupabase.url,
@@ -12,7 +13,7 @@ Future<void> main() async {
   );
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    routes: AppRoutes.routesMap(),
+    routes: AppRoutes.define(),
     initialRoute: AppRoutes.loginPage,
   ));
 }

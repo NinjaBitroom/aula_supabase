@@ -37,6 +37,10 @@ class ForgotPassPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.homePage);
               },
+              style: const ButtonStyle(
+                foregroundColor: MaterialStatePropertyAll(Colors.white),
+                backgroundColor: MaterialStatePropertyAll(Colors.blue),
+              ),
               child: const Text('Recuperar'),
             ),
           ],
