@@ -16,8 +16,8 @@ final class AppRoutes {
 
   static Map<String, WidgetBuilder> define() {
     return {
-      loginPage: (BuildContext context) => const LoginPage(),
-      registerPage: (BuildContext context) => const RegisterPage(),
+      loginPage: (BuildContext context) => LoginPage(),
+      registerPage: (BuildContext context) => RegisterPage(),
       forgotPassPage: (BuildContext context) => const ForgotPassPage(),
       homePage: (BuildContext context) => const HomePage(),
       cadastroPessoaPage: (BuildContext context) => const CadastroPessoaPage(),

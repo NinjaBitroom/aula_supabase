@@ -17,6 +17,7 @@ final class _HomePageState extends State<HomePage> {
         title: const Text('Aplicativo'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.logout)),
       ),
       body: GridView.count(
         crossAxisCount: 2,

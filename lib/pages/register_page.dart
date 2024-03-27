@@ -1,8 +1,11 @@
-import 'package:aula_supase/app_routes.dart';
+import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+final class RegisterPage extends StatelessWidget {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,8 @@ class RegisterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              controller: _emailController,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide(width: 12),
@@ -30,6 +35,9 @@ class RegisterPage extends StatelessWidget {
               height: 12,
             ),
             TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
+              controller: _passwordController,
               decoration: const InputDecoration(
                 labelText: 'Senha',
                 border: OutlineInputBorder(
@@ -42,7 +50,11 @@ class RegisterPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.homePage);
+                OperationSupabaseDB().createNewUserSupabase(
+                  _emailController.text,
+                  _passwordController.text,
+                );
+                // Navigator.pushNamed(context, AppRoutes.homePage);
               },
               style: const ButtonStyle(
                 foregroundColor: MaterialStatePropertyAll(Colors.white),

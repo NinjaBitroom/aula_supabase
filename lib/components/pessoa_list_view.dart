@@ -11,7 +11,7 @@ class PessoaListView extends StatefulWidget {
 }
 
 class _PessoaListViewState extends State<PessoaListView> {
-  List<PessoaModel>? _pessoas;
+  late List<PessoaModel> _pessoas;
 
   Future<void> _atualizarPessoas() async {
     final db = OperationSupabaseDB();
@@ -27,7 +27,6 @@ class _PessoaListViewState extends State<PessoaListView> {
     setState(() {
       _pessoas = widget.pessoas;
     });
-    _atualizarPessoas();
   }
 
   @override
@@ -40,7 +39,7 @@ class _PessoaListViewState extends State<PessoaListView> {
           leading: IconButton(
             onPressed: () {
               final nomeController =
-                  TextEditingController(text: _pessoas?[index].nome);
+                  TextEditingController(text: _pessoas[index].nome);
               showDialog(
                 context: context,
                 builder: (context) => Dialog(
@@ -60,10 +59,10 @@ class _PessoaListViewState extends State<PessoaListView> {
                           onPressed: () async {
                             final db = OperationSupabaseDB();
                             await db.updateNomePessoa(
-                              _pessoas![index].id,
+                              _pessoas[index].id,
                               nomeController.text,
                             );
-                            String? nomeAntigo = _pessoas?[index].nome;
+                            String? nomeAntigo = _pessoas[index].nome;
                             String nomeNovo = nomeController.text;
                             await _atualizarPessoas();
                             if (!context.mounted) return;
@@ -96,8 +95,8 @@ class _PessoaListViewState extends State<PessoaListView> {
           trailing: IconButton(
             onPressed: () async {
               final db = OperationSupabaseDB();
-              await db.deletePessoa(_pessoas![index].id);
-              String? nomeDeletado = _pessoas?[index].nome;
+              await db.deletePessoa(_pessoas[index].id);
+              String? nomeDeletado = _pessoas[index].nome;
               await _atualizarPessoas();
               if (!context.mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -114,10 +113,10 @@ class _PessoaListViewState extends State<PessoaListView> {
               Radius.circular(12),
             ),
           ),
-          title: Text(_pessoas![index].nome),
+          title: Text(_pessoas[index].nome),
         ),
       ),
-      itemCount: _pessoas?.length,
+      itemCount: _pessoas.length,
     );
   }
 }

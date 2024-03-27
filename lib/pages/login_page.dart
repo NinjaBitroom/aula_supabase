@@ -1,8 +1,12 @@
 import 'package:aula_supase/app_routes.dart';
+import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
+  LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +24,7 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextFormField(
+              controller: _emailController,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide(width: 12),
@@ -30,6 +35,7 @@ class LoginPage extends StatelessWidget {
               height: 12,
             ),
             TextFormField(
+              controller: _passwordController,
               decoration: const InputDecoration(
                 labelText: 'Senha',
                 border: OutlineInputBorder(
@@ -42,7 +48,19 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.homePage);
+                final db = OperationSupabaseDB();
+                print(_emailController.text);
+                print(_passwordController.text);
+                db.signInUserSupabase(
+                  _emailController.text,
+                  _passwordController.text,
+                );
+                print(db.supabase.auth.currentUser);
+                print(db.supabase.auth.currentSession);
+                if ((db.supabase.auth.currentUser != null) &&
+                    (db.supabase.auth.currentSession != null)) {
+                  Navigator.pushNamed(context, AppRoutes.homePage);
+                }
               },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(Colors.blue),
