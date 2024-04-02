@@ -48,19 +48,16 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                final db = OperationSupabaseDB();
-                print(_emailController.text);
-                print(_passwordController.text);
-                db.signInUserSupabase(
+                OperationSupabaseDB()
+                    .signInUserSupabase(
                   _emailController.text,
                   _passwordController.text,
-                );
-                print(db.supabase.auth.currentUser);
-                print(db.supabase.auth.currentSession);
-                if ((db.supabase.auth.currentUser != null) &&
-                    (db.supabase.auth.currentSession != null)) {
-                  Navigator.pushNamed(context, AppRoutes.homePage);
-                }
+                )
+                    .then((value) {
+                  if ((value.session != null) && (value.user != null)) {
+                    Navigator.pushNamed(context, AppRoutes.homePage);
+                  }
+                });
               },
               style: const ButtonStyle(
                 backgroundColor: MaterialStatePropertyAll(Colors.blue),

@@ -1,5 +1,6 @@
 import 'package:aula_supase/app_routes.dart';
 import 'package:aula_supase/components/custom_elevated_button.dart';
+import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
 final class HomePage extends StatefulWidget {
@@ -17,7 +18,12 @@ final class _HomePageState extends State<HomePage> {
         title: const Text('Aplicativo'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
-        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.logout)),
+        leading: IconButton(
+            onPressed: () {
+              OperationSupabaseDB().signOutSupabase();
+              Navigator.pushNamed(context, AppRoutes.loginPage);
+            },
+            icon: const Icon(Icons.logout)),
       ),
       body: GridView.count(
         crossAxisCount: 2,

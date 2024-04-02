@@ -15,26 +15,19 @@ final class OperationSupabaseDB {
     });
   }
 
-  Future<void> createNewUserSupabase(String email, String password) async {
-    final AuthResponse res = await supabase.auth.signUp(
+  Future<AuthResponse> createNewUserSupabase(
+      String email, String password) async {
+    return await supabase.auth.signUp(
       email: email,
       password: password,
     );
-    final Session? session = res.session;
-    final User? user = res.user;
-    print(session);
-    print(user);
   }
 
-  Future<void> signInUserSupabase(String email, String password) async {
-    final AuthResponse res = await supabase.auth.signInWithPassword(
+  Future<AuthResponse> signInUserSupabase(String email, String password) async {
+    return await supabase.auth.signInWithPassword(
       email: email,
       password: password,
     );
-    final Session? session = res.session;
-    final User? user = res.user;
-    print('session: $session');
-    print('user: $user');
   }
 
   Future<void> signOutSupabase() async {

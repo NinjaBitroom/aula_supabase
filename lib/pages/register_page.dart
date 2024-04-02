@@ -1,3 +1,4 @@
+import 'package:aula_supase/app_routes.dart';
 import 'package:aula_supase/database/operation_supabase.dart';
 import 'package:flutter/material.dart';
 
@@ -50,11 +51,16 @@ final class RegisterPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                OperationSupabaseDB().createNewUserSupabase(
+                OperationSupabaseDB()
+                    .createNewUserSupabase(
                   _emailController.text,
                   _passwordController.text,
-                );
-                // Navigator.pushNamed(context, AppRoutes.homePage);
+                )
+                    .then((value) {
+                  if ((value.session != null) && (value.user != null)) {
+                    Navigator.pushNamed(context, AppRoutes.homePage);
+                  }
+                });
               },
               style: const ButtonStyle(
                 foregroundColor: MaterialStatePropertyAll(Colors.white),
