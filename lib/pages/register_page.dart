@@ -59,7 +59,8 @@ final class RegisterPage extends StatelessWidget {
                 )
                     .then((value) {
                   if ((value.session != null) && (value.user != null)) {
-                    Navigator.pushNamed(context, AppRoutes.homePage);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, AppRoutes.homePage, (_) => false);
                   }
                 });
               },

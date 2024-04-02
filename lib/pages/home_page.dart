@@ -15,13 +15,14 @@ final class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('Aplicativo'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         leading: IconButton(
             onPressed: () {
               OperationSupabaseDB().signOutSupabase();
-              Navigator.pushNamed(context, AppRoutes.loginPage);
+              Navigator.pushReplacementNamed(context, AppRoutes.loginPage);
             },
             icon: const Icon(Icons.logout)),
       ),

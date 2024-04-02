@@ -13,6 +13,7 @@ final class _ListaPessoaPageState extends State<ListaPessoaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         title: const Text('Listar Pessoa'),

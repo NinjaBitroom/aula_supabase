@@ -21,6 +21,7 @@ final class _CadastroPessoaPageState extends State<CadastroPessoaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
         title: const Text(

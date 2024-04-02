@@ -12,6 +12,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Faça seu login'),
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
@@ -58,7 +59,7 @@ class LoginPage extends StatelessWidget {
                 )
                     .then((value) {
                   if ((value.session != null) && (value.user != null)) {
-                    Navigator.pushNamed(context, AppRoutes.homePage);
+                    Navigator.pushReplacementNamed(context, AppRoutes.homePage);
                   }
                 });
               },
