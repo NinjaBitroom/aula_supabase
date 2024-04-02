@@ -62,6 +62,10 @@ final class RegisterPage extends StatelessWidget {
                     Navigator.pushNamedAndRemoveUntil(
                         context, AppRoutes.homePage, (_) => false);
                   }
+                }).onError((error, stackTrace) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('$error'),
+                  ));
                 });
               },
               style: const ButtonStyle(

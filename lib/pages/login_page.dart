@@ -61,6 +61,10 @@ class LoginPage extends StatelessWidget {
                   if ((value.session != null) && (value.user != null)) {
                     Navigator.pushReplacementNamed(context, AppRoutes.homePage);
                   }
+                }).onError((error, stackTrace) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('$error'),
+                  ));
                 });
               },
               style: const ButtonStyle(
