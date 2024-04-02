@@ -24,6 +24,7 @@ class LoginPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextFormField(
+              keyboardType: TextInputType.emailAddress,
               controller: _emailController,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(
@@ -35,6 +36,8 @@ class LoginPage extends StatelessWidget {
               height: 12,
             ),
             TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
               controller: _passwordController,
               decoration: const InputDecoration(
                 labelText: 'Senha',

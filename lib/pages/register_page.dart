@@ -27,10 +27,11 @@ final class RegisterPage extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               controller: _emailController,
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(width: 12),
-                  ),
-                  labelText: 'E-mail'),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(width: 12),
+                ),
+                labelText: 'E-mail',
+              ),
             ),
             const SizedBox(
               height: 12,
